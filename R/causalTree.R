@@ -46,9 +46,9 @@ print("causalTree.R")
 	#if (sum(treatment) != nobs) {
 		#stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
 	#}
-	if (sum(treatment) == 0) {
-		stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
-	}
+	#if (sum(treatment) == 0) {
+		#stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
+	#}
 	
     ## check propensity score
 	if (missing(propensity)) {
@@ -260,7 +260,7 @@ print("causalTree.R")
 			xval <- 0L
 		} else if (length(xval) == 1L) {
 			## make random groups
-		  control_idx <- which(treatment ==0)
+		        control_idx <- which(treatment ==0)
 			treat_idx <- which(treatment ==1)
 			xgroups <- rep(0, nobs)
 			xgroups[control_idx] <- sample(rep(1L:xval, length = length(control_idx)), length(control_idx), replace = F)
