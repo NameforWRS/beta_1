@@ -258,7 +258,7 @@ print("causalTree.R")
 		if (is.null(xval) || (length(xval) == 1L && xval == 0L) || method=="user") {
 			xgroups <- 0L
 			xval <- 0L
-		} ##else if (length(xval) == 1L) {
+		##} else if (length(xval) == 1L) {
 			## make random groups
 			##control_idx <- which(treatment == 0)
 			##treat_idx <- which(treatment == 1)
