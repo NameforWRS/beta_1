@@ -35,7 +35,7 @@ CTinit(int n, double *y[], int maxcat, char **error,
 }
 
 void
-CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean, 
+CTss(int n, double *y[], double *value,  /*double *con_mean, double *tr_mean, */
      double *risk, double *wt, double *treatment, double max_y,
      double alpha, double train_to_est_ratio)
 {
@@ -54,13 +54,13 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
         
     for (i = 0; i < n; i++) {
         temp1 += *y[i] * wt[i] * treatment[i];
-        temp0 += *y[i] * wt[i] * treatment[i];
+        
        /*temp0 += *y[i] * wt[i] * (1 - treatment[i]);*/
         twt += wt[i];
         ttreat += wt[i] * treatment[i];
         tr_sqr_sum += (*y[i]) * (*y[i]) * wt[i] * treatment[i];
         /*con_sqr_sum += (*y[i]) * (*y[i]) * wt[i] * (1- treatment[i]);*/
-        con_sqr_sum += (*y[i]) * (*y[i]) * wt[i] * treatment[i];
+       
             
         y_sum += treatment[i];
         z_sum += *y[i];
@@ -72,8 +72,8 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
 
    
     //effect = temp1 / ttreat - temp0 / (twt - ttreat);        
-    tr_var = tr_sqr_sum / ttreat - temp1 * temp1 / (ttreat * ttreat);
-    con_var = con_sqr_sum / (twt - ttreat) - temp0 * temp0 / ((twt - ttreat) * (twt - ttreat));
+   /* tr_var = tr_sqr_sum / ttreat - temp1 * temp1 / (ttreat * ttreat);*/
+    /*con_var = con_sqr_sum / (twt - ttreat) - temp0 * temp0 / ((twt - ttreat) * (twt - ttreat));*/
    
    
     /* Y= beta_0 + beta_1 T */
@@ -83,7 +83,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     beta_sqr_sum = beta_1 * beta_1 ;
     var_beta = beta_sqr_sum / n - beta_1 * beta_1 / (n * n);
     *tr_mean = temp1 / ttreat;
-    *con_mean = temp0 / (twt - ttreat);
+   /* *con_mean = temp0 / (twt - ttreat);*/
     *value = effect;
     //*risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + 
     //(1 - alpha) * (1 + train_to_est_ratio) * twt * (tr_var /ttreat  + con_var / (twt - ttreat));
@@ -157,10 +157,10 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     beta_sqr_sum = beta_1 * beta_1 ;
     var_beta = beta_sqr_sum / n - beta_1 * beta_1 / (n * n);
     //temp = right_tr_sum / right_tr - (right_sum - right_tr_sum) / (right_wt - right_tr);
-    tr_var = right_tr_sqr_sum / right_tr - right_tr_sum * right_tr_sum / (right_tr * right_tr);
-    con_var = (right_sqr_sum - right_tr_sqr_sum) / (right_wt - right_tr)
+   /* tr_var = right_tr_sqr_sum / right_tr - right_tr_sum * right_tr_sum / (right_tr * right_tr);*/
+    /*con_var = (right_sqr_sum - right_tr_sqr_sum) / (right_wt - right_tr)
         - (right_sum - right_tr_sum) * (right_sum - right_tr_sum) 
-        / ((right_wt - right_tr) * (right_wt - right_tr));
+        / ((right_wt - right_tr) * (right_wt - right_tr));*/
    /* node_effect = alpha * temp * temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
         * right_wt * (tr_var / right_tr  + con_var / (right_wt - right_tr));*/
    
