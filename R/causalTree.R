@@ -258,13 +258,13 @@ print("causalTree.R")
 		if (is.null(xval) || (length(xval) == 1L && xval == 0L) || method=="user") {
 			xgroups <- 0L
 			xval <- 0L
-		} else if (length(xval) == 1L) {
+		} ##else if (length(xval) == 1L) {
 			## make random groups
-			control_idx <- which(treatment == 0)
-			treat_idx <- which(treatment == 1)
-			xgroups <- rep(0, nobs)
-			xgroups[control_idx] <- sample(rep(1L:xval, length = length(control_idx)), length(control_idx), replace = F)
-			xgroups[treat_idx] <- sample(rep(1L:xval, length = length(treat_idx)), length(treat_idx), replace = F)  
+			##control_idx <- which(treatment == 0)
+			##treat_idx <- which(treatment == 1)
+			##xgroups <- rep(0, nobs)
+			##xgroups[control_idx] <- sample(rep(1L:xval, length = length(control_idx)), length(control_idx), replace = F)
+			##xgroups[treat_idx] <- sample(rep(1L:xval, length = length(treat_idx)), length(treat_idx), replace = F)  
 		} else if (length(xval) == nobs) {
 			## pass xgroups by xval 
 			xgroups <- xval
