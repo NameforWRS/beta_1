@@ -259,7 +259,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 			xgroups <- 0L
 			xval <- 0L
 		} else if (length(xval) == 1L) {
-			Rprintf("causaltree.R\n");
+			print("causaltree.R");
 			## make random groups
 			control_idx <- which(treatment == 0)
 			treat_idx <- which(treatment == 1)
