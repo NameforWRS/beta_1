@@ -54,12 +54,14 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
         
     for (i = 0; i < n; i++) {
         temp1 += *y[i] * wt[i] * treatment[i];
-        temp0 += *y[i] * wt[i] * (1 - treatment[i]);
+        temp0 += *y[i] * wt[i] * treatment[i];
+       /*temp0 += *y[i] * wt[i] * (1 - treatment[i]);*/
         twt += wt[i];
         ttreat += wt[i] * treatment[i];
         tr_sqr_sum += (*y[i]) * (*y[i]) * wt[i] * treatment[i];
-        con_sqr_sum += (*y[i]) * (*y[i]) * wt[i] * (1- treatment[i]);
-        
+        /*con_sqr_sum += (*y[i]) * (*y[i]) * wt[i] * (1- treatment[i]);*/
+        con_sqr_sum += (*y[i]) * (*y[i]) * wt[i] * treatment[i];
+            
         y_sum += treatment[i];
         z_sum += *y[i];
         yz_sum += *y[i] * treatment[i];
