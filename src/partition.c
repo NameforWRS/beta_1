@@ -21,7 +21,7 @@ int
 partition(int nodenum, pNode splitnode, double *sumrisk, int n1, int n2,
           int minsize, int split_Rule, double alpha, int bucketnum, int bucketMax,
           double train_to_est_ratio)
-{Rprintf("partition\n");
+{
     pNode me;
     double tempcp;
     int i, j, k;
@@ -38,16 +38,16 @@ partition(int nodenum, pNode splitnode, double *sumrisk, int n1, int n2,
     n = n2 - n1;                /* total number of observations */
     me->id = nodenum;
     
-#ifdef DEBUG
+//#ifdef DEBUG
     
     //fptr=fopen("C:\\Users\\vikasr\\Documents\\debug_text.txt","w");
     //fprintf(fptr,"test print\n");
     //fclose(fptr);
     R_FlushConsole();
-    //Rprintf("partition.c\n");
-   //R_ShowMessage("R_show_message\n");
+    //Rprintf("test print\n");
+    //R_ShowMessage("R_show_message\n");
     
-#endif
+//#endif
     
     if (nodenum > 1) {
         twt = 0;
@@ -59,6 +59,7 @@ partition(int nodenum, pNode splitnode, double *sumrisk, int n1, int n2,
 		      j = -(1 + j);   /* if missing, value = -(1+ true index) */
 	      ct.wtemp[k] = ct.wt[j];
           ct.trtemp[k] = ct.treatment[j];
+	  ct.IVtemp[k] = ct.IV[j];
 	      ct.ytemp[k] = ct.ydata[j];
 	      twt += ct.wt[j];
           ttr += ct.treatment[j] * ct.wt[j];
@@ -71,7 +72,7 @@ partition(int nodenum, pNode splitnode, double *sumrisk, int n1, int n2,
 	    } else if (split_Rule == 2) {
 	        // ct
 	        (*ct_eval) (n, ct.ytemp, me->response_est, me->controlMean, me->treatMean, 
-          &(me->risk), ct.wtemp, ct.trtemp, ct.max_y, alpha, train_to_est_ratio);
+          &(me->risk), ct.wtemp, ct.trtemp, ct.IVtemp, ct.max_y, alpha, train_to_est_ratio);
 	    } else if (split_Rule == 3) {
 	        // fit
 	        (*ct_eval) (n, ct.ytemp, me->response_est, me->controlMean, me->treatMean,
@@ -160,7 +161,7 @@ partition(int nodenum, pNode splitnode, double *sumrisk, int n1, int n2,
 	    return 0;
     }
 #ifdef DEBUG
- /*   print_tree(me, 4); */
+    print_tree(me, 4);
 #endif
     if (ct.maxsur > 0)
 	surrogate(me, n1, n2);
