@@ -9,7 +9,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 					   bucketMax = 100, cv.option, cv.Honest, minsize = 2L, 
 					   x = FALSE, y = TRUE, propensity, control, split.alpha = 0.5, cv.alpha = 0.5,cv.gamma=0.5,split.gamma=0.5,
 					   cost, ...){ 
-print("causalTree.R")
+
 	Call <- match.call()
 
 	indx <- match(c("formula", "data", "weights", "subset"),
@@ -43,12 +43,13 @@ print("causalTree.R")
 		stop("You should input the treatment status vector for data:
 			 1 represent treated and 0 represent controlled.")   
 	}
-	#if (sum(treatment) != nobs) {
-		#stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
-	#}
-	#if (sum(treatment) == 0) {
-		#stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
-	#}
+	if (sum(treatment) != nobs) {
+		stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
+	}
+
+	if (sum(treatment) == 0 || sum(treatment) == nobs) {
+		stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
+	}
 	
     ## check propensity score
 	if (missing(propensity)) {
@@ -94,7 +95,6 @@ print("causalTree.R")
 	                                       "fitD", "tstatsD", "user", "userD","policy","policyD"))
 	print(split.Rule.int)
 	print(split.Rule)
-	
 	if (is.na(split.Rule.int)) stop("Invalid splitting rule.")
 	split.Rule <- c("TOT", "CT", "fit", "tstats", "TOTD", "CTD", "fitD", 
 	                "tstatsD", "user", "userD","policy","policyD")[split.Rule.int]
@@ -260,13 +260,12 @@ print("causalTree.R")
 			xval <- 0L
 		} else if (length(xval) == 1L) {
 			## make random groups
-		        control_idx <- which(treatment ==0)
-			treat_idx <- which(treatment ==1)
+			control_idx <- which(treatment == 0)
+			treat_idx <- which(treatment == 1)
 			xgroups <- rep(0, nobs)
 			xgroups[control_idx] <- sample(rep(1L:xval, length = length(control_idx)), length(control_idx), replace = F)
 			xgroups[treat_idx] <- sample(rep(1L:xval, length = length(treat_idx)), length(treat_idx), replace = F)  
-		} 
-                 else if (length(xval) == nobs) {
+		} else if (length(xval) == nobs) {
 			## pass xgroups by xval 
 			xgroups <- xval
 			xval <- length(unique(xgroups))
