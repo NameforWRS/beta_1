@@ -9,7 +9,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 					   bucketMax = 100, cv.option, cv.Honest, minsize = 2L, 
 					   x = FALSE, y = TRUE, propensity, control, split.alpha = 0.5, cv.alpha = 0.5,cv.gamma=0.5,split.gamma=0.5,
 					   cost, ...){ 
-print("causalTree.R")
+
 	Call <- match.call()
 
 	indx <- match(c("formula", "data", "weights", "subset"),
@@ -259,7 +259,7 @@ print("causalTree.R")
 			xgroups <- 0L
 			xval <- 0L
 		} else if (length(xval) == 1L) {
-			{Rprintf("causaltree.R\n");
+			Rprintf("causaltree.R\n");
 			## make random groups
 			control_idx <- which(treatment == 0)
 			treat_idx <- which(treatment == 1)
