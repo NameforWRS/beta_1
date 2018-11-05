@@ -9,7 +9,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 					   bucketMax = 100, cv.option, cv.Honest, minsize = 2L, 
 					   x = FALSE, y = TRUE, propensity, control, split.alpha = 0.5, cv.alpha = 0.5,cv.gamma=0.5,split.gamma=0.5,
 					   cost, ...){ 
-
+print("causalTree.R")
 	Call <- match.call()
 
 	indx <- match(c("formula", "data", "weights", "subset"),
@@ -44,10 +44,9 @@ causalTree <- function(formula, data, weights, treatment, subset,
 			 1 represent treated and 0 represent controlled.")   
 	}
 	#if (sum(treatment) != nobs) {
-	#	stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
+		#stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
 	#}
-
-	if (sum(treatment) == 0 || sum(treatment) == nobs) {
+	if (sum(treatment) == 0) {
 		stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
 	}
 	
@@ -95,6 +94,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 	                                       "fitD", "tstatsD", "user", "userD","policy","policyD"))
 	print(split.Rule.int)
 	print(split.Rule)
+	
 	if (is.na(split.Rule.int)) stop("Invalid splitting rule.")
 	split.Rule <- c("TOT", "CT", "fit", "tstats", "TOTD", "CTD", "fitD", 
 	                "tstatsD", "user", "userD","policy","policyD")[split.Rule.int]
