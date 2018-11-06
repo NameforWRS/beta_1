@@ -10,6 +10,7 @@ static double *wts, *trs, *trsums;
 static int *countn;
 static int *tsplit;
 static double *wtsqrsums, *trsqrsums;
+Rprintf("CT.c\n");
 
 int
 CTinit(int n, double *y[], int maxcat, char **error,
