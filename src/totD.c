@@ -24,7 +24,7 @@ static int *n_bucket;
 static double *wts_bucket, *trs_bucket;
 static double *tr_end_bucket, *con_end_bucket;
 static double *wtsums_bucket;
-
+Rprintf("totD.c\n");
 
 int
 totDinit(int n, double *y[], int maxcat, char **error,
