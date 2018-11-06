@@ -14,7 +14,7 @@ static double *wtsqrsums, *wttrsqrsums;
 static double *wts, *trs, *trsums;
 static int *countn;
 static int *tsplit;
-
+Rprintf("tot.c\n");
 int
 totinit(int n, double *y[], int maxcat, char **error,
         int *size, int who, double *wt, double *treatment, 
