@@ -308,7 +308,8 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         for (i = 0; i < nclass; i++) {
             if (countn[i] > 0) {
                 tsplit[i] = RIGHT;
-                treatment_effect[i] = trsums[j] / trs[j] - (wtsums[j] - trsums[j]) / (wts[j] - trs[j]);
+                /*treatment_effect[i] = trsums[j] / trs[j] - (wtsums[j] - trsums[j]) / (wts[j] - trs[j]);*/
+                treatment_effect[i] = trsums[j] / trs[j];
             } else
                 tsplit[i] = 0;
         }
@@ -358,13 +359,16 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 (int) right_wt - (int) right_tr >= min_node_size) {
                 
                 left_temp = left_tr_sum / left_tr - (left_sum - left_tr_sum) 
-                    / (left_wt - left_tr);
-                
+                    / (left_wt - left_tr); 
+         
+                        
                 left_tr_var = left_tr_sqr_sum / left_tr 
                     - left_tr_sum  * left_tr_sum / (left_tr * left_tr);
+                
                 left_con_var = (left_sqr_sum - left_tr_sqr_sum) / (left_wt - left_tr)  
                     - (left_sum - left_tr_sum) * (left_sum - left_tr_sum)
                     / ((left_wt - left_tr) * (left_wt - left_tr));       
+                
                 left_effect = alpha * left_temp * left_temp * left_wt
                     - (1 - alpha) * (1 + train_to_est_ratio) * left_wt * 
                         (left_tr_var / left_tr + left_con_var / (left_wt - left_tr));
