@@ -24,13 +24,14 @@ static int *n_bucket;
 static double *wts_bucket, *trs_bucket;
 static double *tr_end_bucket, *con_end_bucket;
 static double *wtsums_bucket;
-Rprintf("totD.c\n");
+
 
 int
 totDinit(int n, double *y[], int maxcat, char **error,
         int *size, int who, double *wt, double *treatment, 
         int bucketnum, int bucketMax, double *train_to_est_ratio)
 {
+        Rprintf("totD.c\n");
     if (who == 1 && maxcat > 0) {
         graycode_init0(maxcat);
         countn = (int *) ALLOC(2 * maxcat, sizeof(int));
