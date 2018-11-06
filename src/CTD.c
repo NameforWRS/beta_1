@@ -24,13 +24,14 @@ static double *wts_bucket, *trs_bucket;
 static double *wtsums_bucket, *trsums_bucket;
 static double *wtsqrsums_bucket, *trsqrsums_bucket; 
 static double *tr_end_bucket, *con_end_bucket;
-Rprintf("use CTD.C");
+
 
 int
 CTDinit(int n, double *y[], int maxcat, char **error,
 		int *size, int who, double *wt, double *treatment, 
 		int bucketnum, int bucketMax, double *train_to_est_ratio)
 {
+	Rprintf("use CTD.C");
 	if (who == 1 && maxcat > 0) {
 		graycode_init0(maxcat);
 		countn = (int *) ALLOC(2 * maxcat, sizeof(int));
