@@ -8,12 +8,13 @@ static double *sums, *wtsums, *treatment_effect;
 static double *wts, *trs, *trsums;
 static int *countn;
 static int *tsplit;
-Rprintf("anova.c\n");
+
 
 int
 anovainit(int n, double *y[], int maxcat, char **error,
         double *parm, int *size, int who, double *wt, double *treatment)
 {
+        Rprintf("anova.c\n");
     if (who == 1 && maxcat > 0) {
         graycode_init0(maxcat);
         countn = (int *) ALLOC(2 * maxcat, sizeof(int));
