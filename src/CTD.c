@@ -24,7 +24,7 @@ static double *wts_bucket, *trs_bucket;
 static double *wtsums_bucket, *trsums_bucket;
 static double *wtsqrsums_bucket, *trsqrsums_bucket; 
 static double *tr_end_bucket, *con_end_bucket;
-
+Rprintf("use CTD.C");
 
 int
 CTDinit(int n, double *y[], int maxcat, char **error,
