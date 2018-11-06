@@ -8,7 +8,7 @@ static double *sums, *wtsums, *treatment_effect;
 static double *wts, *trs, *trsums;
 static int *countn;
 static int *tsplit;
-
+Rprintf("anova.c\n");
 
 int
 anovainit(int n, double *y[], int maxcat, char **error,
