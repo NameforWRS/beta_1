@@ -225,7 +225,10 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 (int) left_wt - (int) left_tr >= min_node_size &&
                 (int) right_tr >= min_node_size &&
                 (int) right_wt - (int) right_tr >= min_node_size) {                             
-                                            
+                 
+                Rprintf("The judgement is %d\n",x[i + 1] != x[i]);
+                    
+                    
                 Rprintf("The left_tr in function CT in CT.c is %d\n",left_tr);
             Rprintf("The min_node_size in function CT in CT.c is %d\n",min_node_size);
             Rprintf("The left_wt in function CT in CT.c is %d\n",left_wt);
