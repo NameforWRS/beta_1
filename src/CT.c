@@ -233,11 +233,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                     Rprintf("The judgement is %d\n",(int) right_tr >= min_node_size);
                     Rprintf("The judgement is %d\n",(int) right_wt - (int) right_tr >= min_node_size);
                     
-                Rprintf("The left_tr in function CT in CT.c is %d\n",left_tr);
+                Rprintf("The left_tr in function CT in CT.c is %d\n",(int)left_tr);
             Rprintf("The min_node_size in function CT in CT.c is %d\n",min_node_size);
-            Rprintf("The left_wt in function CT in CT.c is %d\n",left_wt);
-            Rprintf("The right_tr in function CT in CT.c is %d\n",right_tr);
-            Rprintf("The right_wt in function CT in CT.c is %d\n",right_wt);
+            Rprintf("The left_wt in function CT in CT.c is %d\n",(int)left_wt);
+            Rprintf("The right_tr in function CT in CT.c is %d\n",(int)right_tr);
+            Rprintf("The right_wt in function CT in CT.c is %d\n",(int)right_wt);
                     
                      
     beta_1 = (left_n * left_yz_sum - left_z_sum * left_y_sum) / (left_n * left_yy_sum - left_y_sum * left_y_sum);
