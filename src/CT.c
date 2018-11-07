@@ -212,7 +212,13 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             right_yy_sum -= treatment[i] * treatment[i];
             left_zz_sum += *y[i] * *y[i];
             right_zz_sum -= *y[i] * *y[i];
-            
+                
+            Rprintf("The left_tr in function CT in CT.c is %d\n",left_tr);
+            Rprintf("The min_node_size in function CT in CT.c is %d\n",min_node_size);
+            Rprintf("The left_wt in function CT in CT.c is %d\n",left_wt);
+            Rprintf("The right_tr in function CT in CT.c is %d\n",right_tr);
+            Rprintf("The right_wt in function CT in CT.c is %d\n",right_wt);
+                
             if (x[i + 1] != x[i] && left_n >= edge &&
                 (int) left_tr >= min_node_size &&
                 (int) left_wt - (int) left_tr >= min_node_size &&
