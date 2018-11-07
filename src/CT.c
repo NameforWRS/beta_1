@@ -183,9 +183,9 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         for (i = 0; right_n > edge; i++) {
                 Rprintf("Come Here\n");
                 
-            Rprintf("The wt[i] in function CT in CT.c is %d\n",wt[i]);
-            Rprintf("The treatment[i] in function CT in CT.c is %d\n",treatment[i]);
-            Rprintf("The y[i] in function CT in CT.c is %d\n",y[i]);
+            Rprintf("The wt[i] in function CT in CT.c is %d\n",(int)wt[i]);
+            Rprintf("The treatment[i] in function CT in CT.c is %d\n",(int)treatment[i]);
+            Rprintf("The y[i] in function CT in CT.c is %d\n",(int)y[i]);
                 
             left_wt += wt[i];
             right_wt -= wt[i];
