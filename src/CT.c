@@ -218,11 +218,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             left_zz_sum += *y[i] * *y[i];
             right_zz_sum -= *y[i] * *y[i];
                 
-            Rprintf("The left_tr in function CT in CT.c is %d\n",left_tr);
-            Rprintf("The min_node_size in function CT in CT.c is %d\n",min_node_size);
-            Rprintf("The left_wt in function CT in CT.c is %d\n",left_wt);
-            Rprintf("The right_tr in function CT in CT.c is %d\n",right_tr);
-            Rprintf("The right_wt in function CT in CT.c is %d\n",right_wt);
+           
                 
             if (x[i + 1] != x[i] && left_n >= edge &&
                 (int) left_tr >= min_node_size &&
@@ -230,7 +226,12 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 (int) right_tr >= min_node_size &&
                 (int) right_wt - (int) right_tr >= min_node_size) {                             
                                             
-               
+                Rprintf("The left_tr in function CT in CT.c is %d\n",left_tr);
+            Rprintf("The min_node_size in function CT in CT.c is %d\n",min_node_size);
+            Rprintf("The left_wt in function CT in CT.c is %d\n",left_wt);
+            Rprintf("The right_tr in function CT in CT.c is %d\n",right_tr);
+            Rprintf("The right_wt in function CT in CT.c is %d\n",right_wt);
+                    
                      
     beta_1 = (left_n * left_yz_sum - left_z_sum * left_y_sum) / (left_n * left_yy_sum - left_y_sum * left_y_sum);
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_n;
