@@ -266,7 +266,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 			xgroups <- rep(0, nobs)
 			xgroups[control_idx] <- sample(rep(1L:xval, length = length(control_idx)), length(control_idx), replace = F)
 			xgroups[treat_idx] <- sample(rep(1L:xval, length = length(treat_idx)), length(treat_idx), replace = F)  
-			print(mode(xgroups));
+			write.csv(xgroups,file = "mydata1.csv",row.names = F)
 		} else if (length(xval) == nobs) {
 			## pass xgroups by xval 
 			xgroups <- xval
