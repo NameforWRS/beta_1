@@ -112,8 +112,9 @@ causalTree(SEXP ncat2, SEXP split_Rule2, SEXP bucketnum2, SEXP bucketMax2, SEXP 
     xgrp = INTEGER(xgrp2);
     xvals = asInteger(xvals2);
     wt = REAL(wt2);
+    Rprintf("The treatment2[1] in function CT in CT.c is %d\n",treatment2[1]);    
     treatment = REAL(treatment2);
-   
+    Rprintf("The treatment[1] in function CT in CT.c is %d\n",treatment[1]);    
     minsize = asInteger(minsize2);
     propensity = asReal(p2);
     split_alpha = asReal(split_alpha2);
