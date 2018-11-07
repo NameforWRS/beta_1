@@ -124,7 +124,7 @@ bsplit(pNode me, int n1, int n2, int minsize, int split_Rule, double alpha, int 
          * error will sometimes create a non zero that should be 0.  Yet we
          * want to retain invariance to the scale of "improve".
          */
-        rprintn(improve);
+        Rprintf(%u,improve);
         if (improve > ct.iscale)
             ct.iscale = improve;  /* largest seen so far */
         if (improve > (ct.iscale * 1e-10)) {
