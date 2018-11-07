@@ -259,15 +259,15 @@ causalTree <- function(formula, data, weights, treatment, subset,
 			xgroups <- 0L
 			xval <- 0L
 		} else if (length(xval) == 1L) {
-			print("causaltree.R");
+			print("causaltree 1.R");
 			## make random groups
 			control_idx <- which(treatment >= 10)
 			treat_idx <- which(treatment < 10)
 			xgroups <- rep(0, nobs)
-			xval;
+			
 			xgroups[control_idx] <- sample(rep(1L:xval, length = length(control_idx)), length(control_idx), replace = F)
 			xgroups[treat_idx] <- sample(rep(1L:xval, length = length(treat_idx)), length(treat_idx), replace = F)  
-			write.csv(treat_idx,file = "mydata1.csv",row.names = F)
+			write.csv(xval,file = "mydata1.csv",row.names = F)
 		} else if (length(xval) == nobs) {
 			## pass xgroups by xval 
 			xgroups <- xval
