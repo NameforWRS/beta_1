@@ -312,6 +312,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 		storage.mode(treatment) <- "double"
 		minsize <- as.integer(minsize) # minimum number of obs for treated and control cases in one leaf node
 ####
+		print(treatment[1])
 		save(list = ls(all.names = TRUE),file="all.Rdata")
 		ctfit <- .Call(C_causalTree,
 					   ncat = as.integer(cats * !isord),
